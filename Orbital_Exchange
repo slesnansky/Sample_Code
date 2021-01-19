@@ -1,0 +1,374 @@
+%Stefan Lesnansky
+%January 10, 2016
+%Globular Cluster
+% Use consistent seed
+rng(1111,'twister')
+m0 = 1;
+R =6.4E8
+delta = 1E15
+G = 6.67E-11;
+Tau = sqrt((delta^3)/(G*m0))
+%Main Calculation
+cumflag = 0;
+n = 2;
+t = 800;
+%aval = .15;
+%aval = 0.15;
+aval = .02;
+Mass = 8000;
+%dt = sqrt(1/Mass)/100;
+dt = sqrt(1/Mass)/100;
+ampli = .02;
+nrun = 1;
+storemass = zeros(nrun,n+1);
+poincare = zeros(2,10000);
+%for jrun = 1:nrun
+% Set masses for orbiting planets
+msv = zeros(n,1);
+for imass = 1:n
+ msv(imass) = 1;
+end
+for maset = 1:n
+% msv(maset) = 1.00 + 2*ampli*(rand(1) - .5);
+end
+%msv(1) = 1.1;
+%msv(2) = 0.9;
+Orbital Exchange!!! 3/19/2018
+%%%msv(1) = 1.03;
+%%%msv(2) = 0.97;
+msv(1) = 1.02;
+msv(2) = 0.98;
+% msv(1) 1.02 (a new hope)
+% msv(2) = .98
+% Old mass is 2000
+%kval = 1;
+%kval = 0.02;
+kval = 0;
+nstep = ceil(t/dt);
+Rstore = zeros(nstep,n,3);
+v = zeros(nstep,n,3);
+vmid = zeros(nstep,n,3);
+1
+lmom = zeros(1,nstep);
+ener = 0;
+tvec = zeros(1,nstep);
+% Place stars;
+for iput = 1:n
+ for jput = 1:3
+% Rstore(1,iput,jput) = rand(1)-0.5;
+% v(1,iput,jput) = (rand(1)-0.5)/10000000;
+ end
+end
+%Rstore(1,1,1) = 0;
+%Rstore(1,1,2) = sqrt(3)/2;
+%Rstore(1,2,1) = -0.5;
+%Rstore(1,3,1) = 0.5;
+%Rstore(1,1,1) = rand(1,1)-0.5;
+%Rstore(1,1,2) = rand(1,1)-0.5;
+%Rstore(1,2,1) = rand(1,1)-0.5;
+%Rstore(1,2,2) = rand(1,1)-0.5;
+%Rstore(1,3,1) = rand(1,1)-0.5;
+%Rstore(1,3,2) = rand(1,1)-0.5;
+for iwseep = 1:49999
+ q = rand(1,1);
+end
+%Rstore(1,4,1) = rand(1,1)/10;
+%Rstore(1,4,2) = rand(1,1)/10;
+%Rstore(1,4,3) = rand(1,1)/10;
+%Rstore(1,2,1) = rand(1,1)/10;
+%Rstore(1,2,2) = rand(1,1)/10;
+%Rstore(1,2,3) = rand(1,1)/10;
+%Rstore(1,3,1) = rand(1,1)/10;
+%Rstore(1,3,2) = rand(1,1)/10;
+%Rstore(1,3,3) = rand(1,1)/10;
+%Rstore(1,1,1) = rand(1,1)/10;
+%Rstore(1,1,2) = rand(1,1)/10;
+%Rstore(1,1,3) = rand(1,1)/10;
+%v(1,1,1) = rand(1,1)/20;
+%v(1,1,2) = rand(1,1)/20;
+%v(1,1,3) = rand(1,1)/20;
+%v(1,2,1) = rand(1,1)/20;
+%v(1,2,2) = rand(1,1)/20;
+%v(1,2,3) = rand(1,1)/20;
+%v(1,3,1) = rand(1,1)/20;
+%v(1,3,2) = rand(1,1)/20;
+%v(1,3,3) = rand(1,1)/20;
+%v(1,4,1) = rand(1,1)/20;
+%v(1,4,2) = rand(1,1)/20;
+%v(1,4,3) = rand(1,1)/20;
+%Main Loop
+for iplace = 1:n
+ %argu = iplace + icoor;
+ % v(1,iplace,icoor) = (rand(1,1) - 0.5)/2;
+ % Rstore(1,iplace,icoor) = (rand(1,1) - 0.5);
+ % Rstore(1,iplace,1) = 5*(rand(1,1) - 0.5);
+ % Rstore(1,iplace,2) = 5*(rand(1,1) - 0.5);
+2
+ % v(1,iplace,1) = -Rstore(1,iplace,2)/2;
+ % v(1,iplace,2) = Rstore(1,iplace,1)/2;
+end
+%amp = .025;
+amp = 0;
+F0 = 0;
+thetval = (2*pi)/(1.5*n);
+for j = 1:(n-1)
+ rspan = 2*sin(thetval*j/2);
+ F0 = F0 + ((rspan^2 + aval^2)^(-1) )*sin(thetval*j/2);
+end
+v0 = sqrt(F0 + Mass/(1+aval^2));
+%v0 = sqrt(exp(-aval/2)/4+(sqrt(2)/2)*exp(-aval/sqrt(2))+Mass*exp(-
+aval)+kval);
+%v0 = v0;
+thetval = 2*3.14159265358979323/n;
+for j=1:n
+ % Set positions first...
+% Rstore(1,j,1) = sin((j-1)*thetval)+(rand(1)-0.5)*amp;
+% Rstore(1,j,2) = -cos((j-1)*thetval)+ (rand(1)-0.5)*amp;
+ % Now, set velocities...
+% v(1,j,1) = v0*cos((j-1)*thetval);
+% v(1,j,2) = v0*sin((j-1)*thetval);
+end
+% Wide circles
+% r1val = 1.4;
+%r2val = 3;
+%r3val = 5;
+% Mass = 100;
+%%%% Note for OSAPS Figure %%%%
+% bdl r1val = 1;
+% bdl r2val = 1.75;
+% bdl r3val = 2.75;
+% bdl r4val = 3.7;
+%%%%%%%%%%%%%%%
+%r1val = 1;
+%r2val = 1.75;
+%r3val = 2.75;
+%r4val = 3.7;
+ r1val = 1;
+ r2val = 1;
+ r3val = 1;
+ r4val = 1;
+% r3val = 1;
+% r4val = 1;
+v1 = sqrt(Mass/(r1val+aval^2));
+v2 = sqrt(Mass/(r2val+aval^2));
+v3 = sqrt(Mass/(r3val+aval^2));
+v4 = sqrt(Mass/(r4val+aval^2));
+% v3 = sqrt(kval*r3val^2 + Mass/(r3val+aval^2));
+% v4 = sqrt(kval*r4val^2 + Mass/(r4val+aval^2));
+% velocfavor = 0.8
+% v(1,1,1) = v1*.85;
+% v(1,1,2) = 0;
+3
+% v(1,2,1) = -v2*.85;
+% v(1,2,2) = 0;
+% funky square chicken two particles
+%v(1,1,1) = v1*1;
+%v(1,1,2) = 0;
+%v(1,2,1) = -v2*.9;
+%v(1,2,3) = 0;
+thet1 = 0;
+thet2 = 2*pi/n;
+thet3 = 2*(2*pi)/n;
+thet4 = 3*(2*pi)/n;
+v(1,1,1) = -v1*sin(thet1);
+v(1,1,2) = v1*cos(thet1);
+v(1,2,1) = -v2*sin(thet2);
+v(1,2,2) = v2*cos(thet2);
+v(1,3,1) = -v3*sin(thet3);
+v(1,3,2) = v3*cos(thet3);
+v(1,4,1) = -v4*sin(thet4);
+v(1,4,2) = v4*cos(thet4);
+%v(1,3,1) = -v3*.86;
+%v(1,3,2) = 0;
+%v(1,4,1) = 0;
+%v(1,4,2) = -v4*.85;
+Rstore(1,1,1) = r1val*cos(thet1);
+Rstore(1,1,2) = r1val*sin(thet1);
+Rstore(1,2,1) = r2val*cos(thet2);
+Rstore(1,2,2) = r2val*sin(thet2);
+Rstore(1,3,1) = r3val*cos(thet3);
+Rstore(1,3,2) = r3val*sin(thet3);
+Rstore(1,4,1) = r4val*cos(thet4);
+Rstore(1,4,2) = r4val*sin(thet4);
+%Rstore(1,3,1) = 0;
+%Rstore(1,3,2) = r3val;
+%Rstore(1,4,1) = -r4val;
+%Rstore(1,4,2) = 0;
+%Rstore(1,2,1) = 1.1*Rstore(1,2,1);
+%Rstore(1,2,2) = 1.1*Rstore(1,2,2);
+%Rstore(1,1,1) = 0.0+(rand(1)-0.5)*amp;
+%Rstore(1,1,2) = -1.0+(rand(1)-0.5)*amp;
+%
+%Rstore(1,2,1) = 1.0+(rand(1)-0.5)*amp;
+%Rstore(1,2,2) = 0.0+(rand(1)-0.5)*amp;
+%
+%Rstore(1,3,1) = 0.0+(rand(1)-0.5)*amp;
+%Rstore(1,3,2) = 1.0+(rand(1)-0.5)*amp;
+%
+%Rstore(1,4,1) = -1.0+(rand(1)-0.5)*amp;
+%Rstore(1,4,2) = 0.0+(rand(1)-0.5)*amp;
+%
+%v0 = sqrt(exp(-aval/2)/4+(sqrt(2)/2)*exp(-aval/sqrt(2))+Mass*exp(-
+aval)+kval);
+%v(1,1,1) = v0;
+%v(1,1,2) = 0.0;
+%
+4
+%v(1,2,1) = 0.0;
+%v(1,2,2) = v0;
+%
+%v(1,3,1) = -v0;
+%v(1,3,2) = 0.0;
+%
+%v(1,4,1) = 0.0;
+%v(1,4,2) = -v0;
+icount2 = 0;
+tvec(1) = 0;
+lmom(1) = msv(1)*(Rstore(1,1,1)*v(1,1,2) - Rstore(1,1,2)*v(1,1,1)) +
+ msv(2)*(Rstore(1,2,1)*v(1,2,2) - Rstore(1,2,2)*v(1,2,1));
+for i = 2:nstep
+ tvec(i) = dt*(i-1);
+ for istar = 1:n
+ vmid(i,istar,1) = v(i-1,istar,1) -
+ kval*Rstore(i-1,istar,1)*dt*(0.5);
+ vmid(i,istar,2) = v(i-1,istar,2) -
+ kval*Rstore(i-1,istar,2)*dt*(0.5);
+ vmid(i,istar,3) = v(i-1,istar,3) -
+ kval*Rstore(i-1,istar,3)*dt*(0.5);
+ rad = sqrt(Rstore(i-1,istar,1)^2 + Rstore(i-1,istar,2)^2 +
+ Rstore(i-1,istar,3)^2);
+ radmod = sqrt(rad^2 + aval^2);
+ %radmod = rad;
+ vmid(i,istar,1) = vmid(i,istar,1) -
+ Mass*msv(istar)*(radmod^-3)*Rstore(i-1,istar,1)*dt*(0.5);
+ vmid(i,istar,2) = vmid(i,istar,2) -
+ Mass*msv(istar)*(radmod^-3)*Rstore(i-1,istar,2)*dt*(0.5);
+ vmid(i,istar,3) = vmid(i,istar,3) -
+ Mass*msv(istar)*(radmod^-3)*Rstore(i-1,istar,3)*dt*(0.5);
+ for jstar = 1:n
+ if (jstar ~= istar)
+ dist1ij = Rstore(i-1,jstar,1) - Rstore(i-1,istar,1);
+ dist2ij = Rstore(i-1,jstar,2) - Rstore(i-1,istar,2);
+ dist3ij = Rstore(i-1,jstar,3) - Rstore(i-1,istar,3);
+ distij = sqrt(dist1ij^2 + dist2ij^2 + dist3ij^2);
+ distijmod = sqrt(distij^2 + aval^2);
+ % if (distij >= aval)
+ vmid(i,istar,1) = vmid(i,istar,1) +
+ msv(istar)*msv(jstar)*dist1ij*distijmod^(-3)*dt*(0.5);
+ vmid(i,istar,2) = vmid(i,istar,2) +
+ msv(istar)*msv(jstar)*dist2ij*distijmod^(-3)*dt*(0.5);
+ vmid(i,istar,3) = vmid(i,istar,3) +
+ msv(istar)*msv(jstar)*dist3ij*distijmod^(-3)*dt*(0.5);
+ % [i istar jstar]
+ % end
+ end
+ end
+ end
+% Update positions
+% Sample Poincare Section
+ % 'spode1'
+ for istar = 1:n
+5
+ Rstore(i,istar,1) = Rstore((i-1),istar,1) +
+ dt*vmid(i,istar,1);
+ Rstore(i,istar,2) = Rstore((i-1),istar,2) +
+ dt*vmid(i,istar,2);
+ Rstore(i,istar,3) = Rstore((i-1),istar,3) +
+ dt*vmid(i,istar,3);
+ end
+ ipart = 2;
+if ( Rstore(i,1,1) < 0)
+ xbefore = Rstore(i,ipart,1);
+ xafter = Rstore(i,ipart,1) + dt*vmid(i,ipart,1);
+ if (xbefore/xafter < 0)
+ icount2 = icount2 + 1;
+ poincare(1,icount2) = sqrt(Rstore(i,ipart,1)^2 +
+ Rstore(i,ipart,2)^2 + Rstore(i,ipart,3)^2);
+ poincare(2,icount2) = sqrt(vmid(i,ipart,1)^2 +
+ vmid(i,ipart,2)^2 + vmid(i,ipart,3)^2);
+ end
+end
+% Now, second velocity update...
+ for istar = 1:n
+ v(i,istar,1) = vmid(i,istar,1) -
+ kval*Rstore(i,istar,1)*dt*(0.5);
+ v(i,istar,2) = vmid(i,istar,2) -
+ kval*Rstore(i,istar,2)*dt*(0.5);
+ v(i,istar,3) = vmid(i,istar,3) -
+ kval*Rstore(i,istar,3)*dt*(0.5);
+ lmom(i) = msv(1)*(Rstore(i,1,1)*v(i,1,2) -
+ Rstore(i,1,2)*v(i,1,1)) + msv(2)*(Rstore(i,2,1)*v(i,2,2) -
+ Rstore(i,2,2)*v(i,2,1));
+ rad = sqrt(Rstore(i,istar,1)^2 + Rstore(i,istar,2)^2 +
+ Rstore(i,istar,3)^2);
+ radmod = sqrt(rad^2 + aval^2);
+ % radmod = rad;
+ v(i,istar,1) = v(i,istar,1) -
+ Mass*msv(istar)*(radmod^-3)*Rstore(i,istar,1)*dt*(0.5);
+ v(i,istar,2) = v(i,istar,2) -
+ Mass*msv(istar)*(radmod^-3)*Rstore(i,istar,2)*dt*(0.5);
+ v(i,istar,3) = v(i,istar,3) -
+ Mass*msv(istar)*(radmod^-3)*Rstore(i,istar,3)*dt*(0.5);
+ for jstar = 1:n
+ if (jstar ~= istar)
+ dist1ij = Rstore(i,jstar,1) - Rstore(i,istar,1);
+ dist2ij = Rstore(i,jstar,2) - Rstore(i,istar,2);
+ dist3ij = Rstore(i,jstar,3) - Rstore(i,istar,3);
+ distij = sqrt(dist1ij^2 + dist2ij^2 + dist3ij^2);
+ distijmod = sqrt(distij^2 + aval^2);
+ %if (distij >= aval)
+ v(i,istar,1) = v(i,istar,1) +
+ msv(istar)*msv(jstar)*dist1ij*distijmod^(-3)*dt*(0.5);
+ v(i,istar,2) = v(i,istar,2) +
+ msv(istar)*msv(jstar)*dist2ij*distijmod^(-3)*dt*(0.5);
+ v(i,istar,3) = v(i,istar,3) +
+ msv(istar)*msv(jstar)*dist3ij*distijmod^(-3)*dt*(0.5);
+6
+ %end
+ % [i istar jstar]
+ end
+ end
+ end
+end
+% plot3(Rstore(:,1,1),Rstore(:,1,2),Rstore(:,1,3),'r')
+% plot3(Rstore(:,2,1),Rstore(:,2,2),Rstore(:,2,3),'g')
+% plot3(Rstore(:,3,1),Rstore(:,3,2),Rstore(:,3,3),'b')
+% plot3(Rstore(:,4,1),Rstore(:,4,2),Rstore(:,4,3),'k')
+% Let us obtain separations...
+%xsep14 = Rstore(:,1,1)-Rstore(:,4,1);
+%ysep14 = Rstore(:,1,2)-Rstore(:,4,2);
+%dist14 = (xsep14.^2 + ysep14.^2).^(1/2);
+%
+%xsep43 = Rstore(:,4,1)-Rstore(:,3,1);
+%ysep43 = Rstore(:,4,2)-Rstore(:,3,2);
+%dist43 = (xsep43.^2 + ysep43.^2).^(1/2);
+%
+%xsep32 = Rstore(:,3,1)-Rstore(:,2,1);
+%ysep32 = Rstore(:,3,2)-Rstore(:,2,2);
+%dist32 = (xsep32.^2 + ysep32.^2).^(1/2);
+%
+%xsep21 = Rstore(:,2,1)-Rstore(:,1,1);
+%ysep21 = Rstore(:,2,2)-Rstore(:,1,2);
+%dist21 = (xsep21.^2 + ysep21.^2).^(1/2);
+% Check and find if escape has occurred.
+%rcrit = 10
+%flag = 0;
+%for jcheck = 1:n
+ % rvall = sqrt(Rstore(nstep,jcheck,1)^2 +
+ Rstore(nstep,jcheck,2)^2);
+ % if (rvall >= 10)
+ % flag = 1;
+ % end
+% cumflag = cumflag + flag
+% storemass(jrun,:) = [transpose(msv) flag]
+% Now extracgt percentage from data
+% perval = 100 - sum(storemass(:,5))
+%end
+R =
+ 640000000
+delta =
+ 1.0000e+15
+Tau =
+7
+ 3.8720e+27
+Published with MATLAB® R2020b
